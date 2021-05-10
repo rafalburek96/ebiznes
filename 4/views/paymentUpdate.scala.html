@@ -1,0 +1,17 @@
+@(payment: Form[UpdatePaymentForm])(implicit request: MessagesRequestHeader, flash: Flash)
+ 
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(routes.PaymentController.updatePaymentHandler()) {
+
+    <input name="id" id="id" value="@payment("id").value" type="hidden" />
+    @inputText(payment("isPaymentFinished"))
+    @inputText(payment("orderID"))
+
+    <div class="buttons">
+        <input type="submit" value="Update Payment"/>
+    </div>
+}
+

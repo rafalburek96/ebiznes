@@ -1,0 +1,9 @@
+@(basket: Basket)
+ 
+@basket.id
+@basket.customerID
+@basket.basketDateAdded
+@basket.isBasketCompleted
+<a href="@controllers.routes.BasketController.updateBasket(basket.id)">Update</a>
+<a href="@controllers.routes.BasketController.removeBasket(basket.id)">Remove</a>
+

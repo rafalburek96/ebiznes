@@ -1,0 +1,10 @@
+@(orders: Seq[Order])
+ 
+@for(o <- orders) {
+    @o.id
+    @o.customerID
+    @o.basketID
+    @o.deliveryDate
+    <a href="@controllers.routes.AddressController.updateAddress(o.id)">Update</a>
+    <a href="@controllers.routes.AddressController.removeAddress(o.id)">Remove</a>
+}

@@ -1,0 +1,18 @@
+@(basket: Form[UpdateBasketForm])(implicit request: MessagesRequestHeader, flash: Flash)
+ 
+    @import helper._
+
+    @flash.get("success").getOrElse("")
+
+    @form(routes.BasketController.updateBasketHandler()) {
+
+        <input name="id" id="id" value="@basket("id").value" type="hidden" />
+        @inputText(basket("customerID"))
+        @inputText(basket("basketDateAdded"))
+        @inputText(basket("isBasketCompleted"))
+
+        <div class="buttons">
+            <input type="submit" value="Update"/>
+        </div>
+    }
+

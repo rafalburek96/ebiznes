@@ -1,0 +1,10 @@
+@(orderedProducts: Seq[OrderedProducts])
+ 
+@for(op <- orderedProducts) {
+    @op.id
+    @op.productID
+    @op.productName
+    @op.quantity
+    <a href="@controllers.routes.OrderedProductsController.updateOrderedProduct(op.id)">Update</a>
+    <a href="@controllers.routes.OrderedProductsController.removeOrderedProduct(op.id)">Remove</a>
+}

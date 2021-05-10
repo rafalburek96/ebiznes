@@ -1,0 +1,10 @@
+@(basket: Seq[Basket])
+ 
+    @for(b <- basket) {
+        @b.id
+        @b.customerID
+        @b.basketDateAdded
+        @b.isBasketCompleted
+        <a href="@controllers.routes.BasketController.updateBasket(b.id)">Update</a>
+        <a href="@controllers.routes.BasketController.removeBasket(b.id)">Remove</a>
+    }

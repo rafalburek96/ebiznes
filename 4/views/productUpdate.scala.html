@@ -1,0 +1,19 @@
+@(product: Form[UpdateProductForm])(implicit request: MessagesRequestHeader, flash: Flash)
+ 
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(routes.ProductController.updateProductHandler()) {
+
+    <input name="id" id="id" value="@product("id").value" type="hidden" />
+    @inputText(product("productName"))
+    @inputText(product("productDescription"))
+    @inputText(product("productPrice"))
+    @inputText(product("category"))
+
+    <div class="buttons">
+        <input type="submit" value="Update Product"/>
+    </div>
+}
+

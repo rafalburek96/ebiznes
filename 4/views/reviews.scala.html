@@ -1,0 +1,8 @@
+@(review: Seq[Review])
+ 
+@for(r <- review) {
+    @r.id
+    @r.reviewRating
+    @r.productID
+    @r.customerID
+} </br>

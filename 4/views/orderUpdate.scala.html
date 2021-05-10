@@ -1,0 +1,19 @@
+@(order: Form[UpdateOrderForm])(implicit request: MessagesRequestHeader, flash: Flash)
+ 
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(routes.OrderController.updateOrderHandler()) {
+
+    <input name="id" id="id" value="@order("id").value" type="hidden" />
+    @inputText(order("customerID"))
+    @inputText(order("basketID"))
+    @inputText(order("deliveryDate"))
+    @inputText(order("purchaseDate"))
+    @inputText(order("orderStatusCode"))
+
+    <div class="buttons">
+        <input type="submit" value="Update"/>
+    </div>
+}

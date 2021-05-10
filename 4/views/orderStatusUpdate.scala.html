@@ -1,0 +1,17 @@
+@(status: Form[UpdateStatusForm])(implicit request: MessagesRequestHeader, flash: Flash)
+ 
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(routes.OrderStatusController.updateStatusHandler()) {
+
+    <input name="id" id="id" value="@status("id").value" type="hidden" />
+    @inputText(status("orderStatusCode"))
+    @inputText(status("orderStatusDescription"))
+
+    <div class="buttons">
+        <input type="submit" value="Update Status"/>
+    </div>
+}
+

@@ -1,0 +1,17 @@
+@(review: Form[CreateReviewForm])(implicit request: MessagesRequestHeader, flash: Flash)
+ 
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(routes.ReviewController.createReviewHandler()) {
+    @*//    @helper.CSRF.formField*@
+
+    @inputText(review("reviewRating"))
+    @inputText(review("productID"))
+    @inputText(review("customerID"))
+
+    <div class="buttons">
+        <input type="submit" value="Create"/>
+    </div>
+}

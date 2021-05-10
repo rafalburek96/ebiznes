@@ -1,0 +1,10 @@
+@(address: Seq[Address])
+ 
+@for(a <- address) {
+    @a.id
+    @a.street
+    @a.flatNumber
+    @a.zipCode
+    <a href="@controllers.routes.AddressController.updateAddress(a.id)">Update</a>
+    <a href="@controllers.routes.AddressController.removeAddress(a.id)">Remove</a>
+}

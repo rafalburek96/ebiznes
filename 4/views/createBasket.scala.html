@@ -1,0 +1,17 @@
+@(basket: Form[CreateBasketForm])(implicit request: MessagesRequestHeader, flash: Flash)
+ 
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(routes.BasketController.createBasketHandler()) {
+    @helper.CSRF.formField
+
+    @inputText(basket("isBasketCompleted"))
+    @inputText(basket("basketDateAdded"))
+    @inputText(basket("customerID"))
+
+    <div class="buttons">
+        <input type="submit" value="Add Basket"/>
+    </div>
+}

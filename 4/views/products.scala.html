@@ -1,0 +1,9 @@
+@(product: Seq[Product])
+ 
+@for(p <- product) {
+    @p.id
+    @p.productName
+    @p.productDescription
+    @p.productPrice
+    @p.category
+}

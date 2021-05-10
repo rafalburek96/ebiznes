@@ -1,0 +1,7 @@
+@(payment: Seq[Payment])
+ 
+@for(p <- payment) {
+    @p.id
+    @p.isPaymentFinished
+    @p.orderID
+}

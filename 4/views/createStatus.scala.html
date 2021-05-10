@@ -1,0 +1,16 @@
+@(status: Form[CreateStatusForm])(implicit request: MessagesRequestHeader, flash: Flash)
+ 
+@import helper._
+
+@flash.get("success").getOrElse("")
+
+@form(routes.OrderStatusController.createStatusHandler()) {
+    @helper.CSRF.formField
+
+    @inputText(status("orderStatusCode"))
+    @inputText(status("orderStatusDescription"))
+
+    <div class="buttons">
+        <input type="submit" value="Add Status"/>
+    </div>
+}

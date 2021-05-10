@@ -1,0 +1,7 @@
+@(statuses: Seq[OrderStatus])
+ 
+@for(s <- statuses) {
+    @s.id
+    @s.orderStatusDescription
+    @s.orderStatusCode
+}

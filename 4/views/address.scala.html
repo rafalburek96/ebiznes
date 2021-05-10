@@ -1,0 +1,9 @@
+@(address: Address)
+ 
+@address.id
+@address.street
+@address.flatNumber
+@address.zipCode
+<a href="@controllers.routes.AddressController.updateAddress(address.id)">Update</a>
+<a href="@controllers.routes.AddressController.removeAddress(address.id)">Remove</a>
+

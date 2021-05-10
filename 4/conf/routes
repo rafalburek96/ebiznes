@@ -1,0 +1,159 @@
+# Home page 
+GET         /                                controllers.ApplicationController.index
+GET         /signOut                         controllers.ApplicationController.signOut
+GET         /authenticate/:provider          controllers.SocialAuthController.authenticate(provider)
+
+GET         /signUp                          controllers.SignUpController.view
+POST        /signUp                          controllers.SignUpController.submit
+
+GET         /signIn                          controllers.SignInController.view
+POST        /signIn                          controllers.SignInController.submit
+
+GET         /totp                            controllers.TotpController.view(userId: java.util.UUID, sharedKey: String, rememberMe: Boolean)
+GET         /enableTotp                      controllers.TotpController.enableTotp
+GET         /disableTotp                     controllers.TotpController.disableTotp
+POST        /totpSubmit                      controllers.TotpController.submit
+POST        /enableTotpSubmit                controllers.TotpController.enableTotpSubmit
+
+GET         /totpRecovery                    controllers.TotpRecoveryController.view(userID: java.util.UUID, sharedKey: String, rememberMe: Boolean)
+POST        /totpRecoverySubmit              controllers.TotpRecoveryController.submit
+
+GET         /password/forgot                 controllers.ForgotPasswordController.view
+POST        /password/forgot                 controllers.ForgotPasswordController.submit
+GET         /password/reset/:token           controllers.ResetPasswordController.view(token: java.util.UUID)
+POST        /password/reset/:token           controllers.ResetPasswordController.submit(token: java.util.UUID)
+GET         /password/change                 controllers.ChangePasswordController.view
+POST        /password/change                 controllers.ChangePasswordController.submit
+
+GET         /account/email/:email            controllers.ActivateAccountController.send(email: String)
+GET         /account/activate/:token         controllers.ActivateAccountController.activate(token: java.util.UUID)
+
+GET         /registred                        controllers.ApplicationController.registred
+
+# End of authentication
+
+# 1. Address
+GET     /address                    controllers.AddressController.getAllAddresses
+GET     /address/:id                controllers.AddressController.getAddress(id: Long)
+DELETE  /address/:id                controllers.AddressController.removeAddress(id: Long)
+POST    /address                    controllers.AddressController.createAddress
+PUT     /address/:id                controllers.AddressController.updateAddress(id: Long)
+GET     /updateAddressFrom/:id      controllers.AddressController.updateAddressFrom(id: Long)
+POST    /updateAddressHandler       controllers.AddressController.updateAddressHandler
+
+# FORM
+GET     /createAddresForm           controllers.AddressController.createAddresForm()
+POST    /createAddressHandler       controllers.AddressController.createAddressHandler()
+GET     /getFormAddresses           controllers.AddressController.getFormAddresses()
+
+# 2. Product
+GET     /product                    controllers.ProductController.getProducts
+DELETE  /product/:id                controllers.ProductController.removeProduct(id: Long)
+POST    /product                    controllers.ProductController.createProduct
+PUT     /product/:id                controllers.ProductController.updateProduct(id: Long)
+
+GET     /createProductForm          controllers.ProductController.createProductForm()
+POST    /createProductHandler       controllers.ProductController.createProductHandler()
+GET     /getProductsForm            controllers.ProductController.getFormProducts()
+GET     /updateProductFrom/:id      controllers.ProductController.updateProductFrom(id: Long)
+POST    /updateProductHandler       controllers.ProductController.updateProductHandler()
+
+# 3. Review
+GET     /review                     controllers.ReviewController.getReviews
+DELETE  /review/:id                 controllers.ReviewController.removeReview(id: Long)
+POST    /review                     controllers.ReviewController.createReview
+PATCH   /review/:id                 controllers.ReviewController.updateReview(id: Long)
+
+GET     /createReviewForm           controllers.ReviewController.createReviewForm()
+POST    /createReviewHandler        controllers.ReviewController.createReviewHandler()
+GET     /getReviewsForm             controllers.ReviewController.getFormReviews()
+GET     /updateReviewFrom/:id       controllers.ReviewController.updateReviewFrom(id: Long)
+POST    /updateReviewHandler        controllers.ReviewController.updateReviewHandler()
+
+# 4. Payment
+GET     /payment                    controllers.PaymentController.getPayments
+DELETE  /payment/:id                controllers.PaymentController.removePayment(id: Long)
+POST    /payment                    controllers.PaymentController.createPayment
+PUT     /payment/:id                controllers.PaymentController.updatePayment(id: Long)
+#FORM
+GET     /createPaymentForm          controllers.PaymentController.createPaymentForm()
+POST    /createPaymentHandler       controllers.PaymentController.createPaymentHandler()
+GET     /getPaymentForm             controllers.PaymentController.getPaymentForm()
+GET     /updatePaymentFrom/:id      controllers.PaymentController.updatePaymentFrom(id: Long)
+POST    /updatePaymentHandler       controllers.PaymentController.updatePaymentHandler()
+
+# 5. Customer
+GET     /customer                   controllers.CustomerController.getCustomers
+DELETE  /customer                   controllers.CustomerController.removeCustomer
+POST    /customer                   controllers.CustomerController.createCustomer
+PATCH   /customer                   controllers.CustomerController.updateCustomer
+
+# 6. Basket
+GET     /basket                     controllers.BasketController.getBaskets
+GET     /basket/:id                 controllers.BasketController.getBasketById(id: Long)
+#DELETE  /basket/:id                 controllers.BasketController.deleteBasket(id: Long)
+POST    /basket                     controllers.BasketController.createBasket
+PUT     /basket/:id                 controllers.BasketController.updateBasket(id: Long)
+#FORM
+POST    /createBasketHandler        controllers.BasketController.createBasketHandler()
+GET     /createBasketForm           controllers.BasketController.createBasketForm()
+GET     /getFormBaskets             controllers.BasketController.getFormBaskets()
+DELETE  /removeBasket/:id           controllers.BasketController.removeBasket(id: Long)
+GET     /updateBasketFrom/:id       controllers.BasketController.updateBasketFrom(id: Long)
+POST    /updateBasketHandler        controllers.BasketController.updateBasketHandler
+
+
+# 7. Order
+GET     /order                      controllers.OrderController.getOrders
+GET     /order/:id                  controllers.OrderController.getOrderById(id: Long)
+DELETE  /order/:id                  controllers.OrderController.removeOrder(id: Long)
+POST    /order                      controllers.OrderController.createOrder
+PUT     /order/:id                  controllers.OrderController.updateOrder(id: Long)
+#FORM
+POST    /createOrderHandler         controllers.OrderController.createOrderHandler()
+GET     /createOrderForm            controllers.OrderController.createOrderForm()
+GET     /getFormOrders              controllers.OrderController.getFormOrders()
+GET     /updateOrderFrom/:id        controllers.OrderController.updateOrderFrom(id: Long)
+POST    /updateOrderHandler         controllers.OrderController.updateOrderHandler()
+
+
+# 8.Status
+GET     /order-status               controllers.OrderStatusController.getStatuses
+DELETE  /order-status/:id           controllers.OrderStatusController.removeStatus(id: Long)
+POST    /order-status               controllers.OrderStatusController.createStatus
+PUT   /order-status/:id             controllers.OrderStatusController.updateStatus(id: Long)
+#FORM
+GET     /createStatusForm           controllers.OrderStatusController.createStatusForm()
+POST    /createStatusHandler        controllers.OrderStatusController.createStatusHandler()
+GET     /getFormStatuses            controllers.OrderStatusController.getFormStatuses()
+GET     /updateStatusFrom/:id       controllers.OrderStatusController.updateStatusFrom(id: Long)
+POST    /updateStatusHandler        controllers.OrderStatusController.updateStatusHandler()
+
+# 9. Ordered Procucts
+GET     /ordered-product             controllers.OrderedProductsController.getOrderedProducts
+GET     /ordered-product/:id         controllers.OrderedProductsController.getOrderedProdById(id: Long)
+DELETE  /ordered-product/:id         controllers.OrderedProductsController.removeOrderedProduct(id: Long)
+POST    /ordered-product             controllers.OrderedProductsController.createOrderedProduct
+PUT   /ordered-product/:id           controllers.OrderedProductsController.updateOrderedProduct(id: Long)
+GET   /createOrderedProductsForm     controllers.OrderedProductsController.createOrderedProductsForm()
+POST  /createOrderedProductsHandler  controllers.OrderedProductsController.createOrderedProductsHandler()
+GET   /getFormOrderedProducts        controllers.OrderedProductsController.getFormOrderedProducts()
+GET   /updateOrderedProductFrom/:id  controllers.OrderedProductsController.updateOrderedProductFrom(id: Long)
+POST  /updateOrderedProductHandler   controllers.OrderedProductsController.updateOrderedProductHandler()
+
+# 10. Product Category
+GET     /category                   controllers.ProductCategoryController.getCategories
+GET     /category/:id               controllers.ProductCategoryController.getCategoryById(id: Long)
+DELETE  /category/:id               controllers.ProductCategoryController.removeCategory(id: Long)
+POST    /category                   controllers.ProductCategoryController.createCategory
+PUT     /category/:id               controllers.ProductCategoryController.updateCategory(id: Long)
+
+GET     /createCategoryForm         controllers.ProductCategoryController.createCategoryForm()
+POST    /createCategoryHandler      controllers.ProductCategoryController.createCategoryHandler()
+GET     /getFormCategories          controllers.ProductCategoryController.getFormCategories()
+GET     /updateCategoryFrom/:id     controllers.ProductCategoryController.updateCategoryFrom(id: Long)
+POST    /updateCategoryHandler      controllers.ProductCategoryController.updateCategoryHandler()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
